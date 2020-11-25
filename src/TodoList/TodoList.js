@@ -2,11 +2,13 @@ import { createContext } from "react";
 import {
   TITLE,
   EXPLANATION,
+  EMPTY_MESSAGE,
   FILTER_CONTENT,
   BUTTON_TEXT,
   LOCAL_STORAGE_KEY,
 } from "../constants/text";
 import useTodos from "./useTodos";
+import ErrorMessage from "../component/ErrorMessage";
 import Todo from "../component/Todo";
 import InputTodo from "../component/InputTodo";
 import ButtonBar from "../component/ButtonBar";
@@ -18,6 +20,7 @@ export default function TodoList() {
     todos,
     select,
     count,
+    error,
     handleTodoAdd,
     handleTodoDone,
     handleTodoEdit,
@@ -25,13 +28,21 @@ export default function TodoList() {
     handleTodoDeleteDone,
     handleTodoSave,
     handleSelect,
+    handleError,
   } = useTodos(LOCAL_STORAGE_KEY);
   return (
     <div className="container">
       <h1 className="my-3 text-secondary">{TITLE}</h1>
+      {error !== "" ? (
+        <ErrorMessage error={error} handleError={handleError} />
+      ) : (
+        ""
+      )}
       <InputTodo
         handleTodoAdd={handleTodoAdd}
+        handleError={handleError}
         explanation={EXPLANATION}
+        emptyMessage={EMPTY_MESSAGE}
         buttonAddText={BUTTON_TEXT.add}
       />
       <div>
