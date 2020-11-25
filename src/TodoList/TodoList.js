@@ -5,11 +5,11 @@ import {
   FILTER_CONTENT,
   BUTTON_TEXT,
   LOCAL_STORAGE_KEY,
-} from "../../constants/text";
+} from "../constants/text";
 import useTodos from "./useTodos";
-import Todo from "./Todo";
-import InputTodo from "./InputTodo";
-import ButtonBar from "./ButtonBar";
+import Todo from "../component/Todo";
+import InputTodo from "../component/InputTodo";
+import ButtonBar from "../component/ButtonBar";
 
 export const FilterContext = createContext();
 
@@ -27,7 +27,7 @@ function TodoList() {
     handleSelect,
   } = useTodos(LOCAL_STORAGE_KEY);
   return (
-    <div className="App container">
+    <div className="container">
       <h1 className="my-3 text-secondary">{TITLE}</h1>
       <InputTodo
         handleTodoAdd={handleTodoAdd}
