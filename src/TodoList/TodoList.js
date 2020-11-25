@@ -13,7 +13,7 @@ import ButtonBar from "../component/ButtonBar";
 
 export const FilterContext = createContext();
 
-function TodoList() {
+export default function TodoList() {
   const {
     todos,
     select,
@@ -69,5 +69,3 @@ function TodoList() {
     </div>
   );
 }
-
-export default TodoList;
